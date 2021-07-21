@@ -25,7 +25,7 @@ function TextArea(props) {
 
 	return (
 		<>
-			<textarea className = 'post-input' maxLength = '280' onChange={changeHandler} value = {value}></textarea>
+			<textarea className = 'post-input' maxLength = '100' onChange={changeHandler} value = {value}></textarea>
 			<button className = 'post-confirm' onClick={postHandler}>post</button>
 		</>
 	)
