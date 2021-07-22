@@ -1,7 +1,6 @@
 import React, {useState } from 'react';
 import { useHistory } from "react-router-dom";
-import './App.css';
-import avatar from './img/avatar.jpg'
+import avatar from '../img/avatar.jpg'
 import EditableField from './EditableFIeld'
 import TextArea from './TextArea'
 import LinkPost from './LinkPost'
