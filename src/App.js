@@ -1,17 +1,16 @@
 import React, {useState, useEffect } from 'react';
-
 import './App.css';
-
-
-import Login from './Login'
+import Login from './components/Login'
 import {
 	Switch,
 	Route,
   } from "react-router-dom";
+import Home from './components/Home'
+import SepPost from './components/SepPost'
 
-import Home from './Home'
 
 function App() {
+	const [posts, setPosts] = useState([])
 
 	return (
 		<Switch>
@@ -19,7 +18,10 @@ function App() {
 		  <Login />
       </Route>
 	  <Route exact path="/home">
-		  <Home />
+		  <Home posts = {posts} setPosts={setPosts} />
+	  </Route>
+	  <Route exact path="/posts/:postId">
+		  <SepPost posts = {posts} setPosts={setPosts}/>
 	  </Route>
     </Switch>
 

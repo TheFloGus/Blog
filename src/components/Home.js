@@ -4,12 +4,12 @@ import './App.css';
 import avatar from './img/avatar.jpg'
 import EditableField from './EditableFIeld'
 import TextArea from './TextArea'
-import Post from './Post'
+import LinkPost from './LinkPost'
 import { v4 as uuidv4 } from 'uuid';
 
 
 
-function Home() {
+function Home({posts, setPosts}) {
 	const [isLogged, setIsLogged] = useState(false);
 	const [loginData, setLoginData] = useState({
 		login: 'theFloGus',
@@ -23,7 +23,7 @@ function Home() {
 	})
 	const [isDarkTheme, setIsDarkTheme] = useState(false);
 
-	const [posts, setPosts] = useState([])
+	
 	const history = useHistory()
 
 	function logInHandler () {
@@ -57,7 +57,12 @@ function Home() {
 					<TextArea setPosts = {setPosts} posts = {posts} isLogged = {isLogged} userData = {userData}/>
 				</div>
 				<div className = 'feed'>
-					{posts.map((item, index) => <Post post = {item} setPosts = {setPosts} posts = {posts} indexx = {index} key = {uuidv4()}/>)}
+					{posts.map((item, index) => <LinkPost 
+					post = {item} 
+					setPosts = {setPosts} 
+					posts = {posts} 
+					indexx = {index} 
+					key = {uuidv4()} />)}
 				</div>
 			</div>
 		</div>

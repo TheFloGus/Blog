@@ -1,10 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
+import { useHistory } from "react-router-dom";
+
 
 function Post ({post, setPosts, posts, indexx}){
 
 	const {date, user, text} = post
 	const [edit, setEdit] = useState(false)
 	const [value, setValue] = useState(text)
+	const history = useHistory()
 
 	function  changeHandler({target}){
 		setValue(target.value)
@@ -25,7 +28,7 @@ function Post ({post, setPosts, posts, indexx}){
 	}
 
 	return (
-		<div className = 'post'> 
+		<div className = 'post' > 
 			<div className = 'post-head'>
 				<p className = 'user-name'>{user}</p>
 				<div>
