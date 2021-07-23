@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react'
+import { useDispatch } from "react-redux";
+import { editItem } from "./slices/userDataSlice"
 
 function EditableField (props) {
 
-	const {value, keyObj, setUserData, userData} = props;
+	const {value, keyObj} = props;
 	const [edit, setEdit] = useState(false);
 	const [word, setWord] = useState('');
+	const dispatch = useDispatch();
 
 	useEffect(() => {setWord(value)}, [value])
 
@@ -13,16 +16,15 @@ function EditableField (props) {
 	}
 
 	function confirmHandler (){
-		setUserData({...userData, [keyObj]: word})
+		
+		dispatch(editItem({word, keyObj}))
 	}
 
 	function buttonHandler(e){
 		if (e.key === 'Enter'){
 			confirmHandler();
 			editHandler()
-			
 		}
-
 	}
 
 	function valueHandler(e){

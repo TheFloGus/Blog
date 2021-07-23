@@ -1,9 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { format } from 'date-fns'
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "./slices/PostsSlice"
 
 
-function TextArea(props) {
-	const {setPosts, posts, isLogged, userData} = props;
+function TextArea() {
+	const dispatch = useDispatch();
+	const userData = useSelector((state) => state.userData.userData);
+	const isLogged = useSelector((state) => state.login.IsLoggedIn);
 	const [value, setValue] = useState('')
 
 	function changeHandler ({target}){
@@ -12,11 +16,11 @@ function TextArea(props) {
 
 	function postHandler(){
 		if (value){
-			setPosts([ {
-				date: format(new Date(2014, 1, 11), 'MM/dd/yyyy'),
+			dispatch(addItem({
+				date: format(new Date(), 'MM/dd/yyyy'),
 				user: isLogged ? userData.nickname : 'guest',
 				text: value,
-			}, ...posts])
+			}))
 
 			setValue('')
 		}

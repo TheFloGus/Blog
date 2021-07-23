@@ -1,27 +1,31 @@
-import React, {useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import Login from './components/Login'
-import {
-	Switch,
-	Route,
-  } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Home from './components/Home'
 import SepPost from './components/SepPost'
 
 
+
 function App() {
-	const [posts, setPosts] = useState([])
+	// const [posts, setPosts] = useState([])
+	// const [isLogged, setIsLogged] = useState(false);
+	// const [loginData, setLoginData] = useState({
+		
+	// })
 
 	return (
 		<Switch>
       <Route exact path="/login">
-		  <Login />
+		  <Login 
+		   />
       </Route>
 	  <Route exact path="/home">
-		  <Home posts = {posts} setPosts={setPosts} />
+		  <Home 
+		  />
 	  </Route>
-	  <Route exact path="/posts/:postId">
-		  <SepPost posts = {posts} setPosts={setPosts}/>
+	  <Route exact path="/posts/postId:postId">
+		  <SepPost />
 	  </Route>
     </Switch>
 

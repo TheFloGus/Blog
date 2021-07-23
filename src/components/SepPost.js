@@ -1,15 +1,16 @@
 import React from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import Post from './Post'
+import { useSelector } from "react-redux";
 
-function SepPost ({posts, setPosts}){
+function SepPost (){
+	const posts = useSelector((state) => state.posts.posts)
 	let { postId } = useParams();
 	const history = useHistory();
 
 	return (
 		<>
-			{console.log(posts)}
-			<Post post = {posts[postId]} setPosts={setPosts} posts = {posts} indexx = {postId} />
+			<Post post = {posts[postId]}  index = {postId} />
 			<button onClick= {() => history.push('/home')}>Go Back</button>
 		</>
 	)
