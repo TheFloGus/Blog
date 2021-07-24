@@ -2,16 +2,14 @@ import React from 'react';
 import { useHistory } from "react-router-dom";
 import Post from './Post'
 
-function LinkPost ({post, setPosts, posts, index}){
+function LinkPost ({post, index}){
 
 	const history = useHistory();
 
 	return (
 		<div className = 'post-container' onClick={() => history.push(`/posts/postId${index}`)}>
 			<Post 
-				post = {post} 
-				setPosts = {setPosts} 
-				posts = {posts} 
+				post = {post}  
 				index = {index} />
 		</div>
 	)

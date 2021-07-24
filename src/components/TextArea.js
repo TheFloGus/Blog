@@ -7,7 +7,7 @@ import { addItem } from "./slices/PostsSlice"
 function TextArea() {
 	const dispatch = useDispatch();
 	const userData = useSelector((state) => state.userData.userData);
-	const isLogged = useSelector((state) => state.login.IsLoggedIn);
+	const isLogged = useSelector((state) => state.login.isLoggedIn.isLogged);
 	const [value, setValue] = useState('')
 
 	function changeHandler ({target}){

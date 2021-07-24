@@ -5,12 +5,13 @@ import EditableField from "./EditableFIeld";
 import TextArea from "./TextArea";
 import LinkPost from "./LinkPost";
 import { v4 as uuidv4 } from "uuid";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleLoggedIn } from './slices/LoginSlice'
 
 function Home() {
   const userData = useSelector((state) => state.userData.userData);
-
-  const isLogged = useSelector((state) => state.login.isLogged);
+  const dispatch = useDispatch();
+  const isLogged = useSelector((state) => state.login.isLoggedIn.isLogged);
 
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
@@ -19,7 +20,7 @@ function Home() {
   const history = useHistory();
 
   function logInHandler() {
-    history.push("/login");
+    isLogged ? dispatch(toggleLoggedIn()) : history.push("/login")
   }
 
   function themeHandler() {
