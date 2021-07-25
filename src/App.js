@@ -8,21 +8,14 @@ import SepPost from './components/SepPost'
 
 
 function App() {
-	// const [posts, setPosts] = useState([])
-	// const [isLogged, setIsLogged] = useState(false);
-	// const [loginData, setLoginData] = useState({
-		
-	// })
 
 	return (
 		<Switch>
       <Route exact path="/login">
-		  <Login 
-		   />
+		  <Login />
       </Route>
 	  <Route exact path="/home">
-		  <Home 
-		  />
+		  <Home />
 	  </Route>
 	  <Route exact path="/posts/postId:postId">
 		  <SepPost />

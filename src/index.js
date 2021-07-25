@@ -6,13 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Redirect } from "react-router-dom";
 import { store } from './store/Store';
 import { Provider } from 'react-redux';
+import { Theme } from './components/context'
 
 
 ReactDOM.render(
  <Provider store={store}>
 	<Router>
-		<Redirect to="/home" />
-		<App />
+		<Theme>
+			<Redirect to="/home" />
+			<App />
+		</Theme>
 	</Router>
   </Provider>,
   document.getElementById('root')

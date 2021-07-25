@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
 import Post from './Post'
+import PropTypes from "prop-types";
 
 function LinkPost ({post, index}){
 
@@ -14,5 +15,10 @@ function LinkPost ({post, index}){
 		</div>
 	)
 }
+
+LinkPost.propTypes = {
+	post: PropTypes.object,
+	index: PropTypes.number,
+};
 
 export default LinkPost;

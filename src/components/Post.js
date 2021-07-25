@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteItem, editItem } from "./slices/PostsSlice";
+import PropTypes from "prop-types";
 
 function Post({ post, index }) {
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ function Post({ post, index }) {
   const [edit, setEdit] = useState(false);
   const [value, setValue] = useState(text);
   const [editable, setEditable] = useState(false)
+
 
   useEffect(() => {
 	  if(user === 'guest') setEditable(true);
@@ -80,5 +82,13 @@ function Post({ post, index }) {
     </div>
   );
 }
+
+Post.propTypes = {
+	post: PropTypes.object,
+	optionalUnion: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number,
+	  ]),
+};
 
 export default Post;

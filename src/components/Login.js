@@ -1,7 +1,8 @@
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleLoggedIn } from './slices/LoginSlice'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { themeContext } from "./context";
 
 
 function Login (){
@@ -10,6 +11,7 @@ function Login (){
 	const dispatch = useDispatch();
 	const [login, setLogin] = useState('')
 	const [password, setPassword] = useState('')
+	const {theme} = useContext(themeContext)
 	
 	const history = useHistory()
 
@@ -25,7 +27,7 @@ function Login (){
 	}
 
 	return (
-		<>
+		<div className = {`big-wrap ${theme}`}>
 			<div className = 'login'>
 				<div className = 'login-inputs'>
 					<p>Login</p>
@@ -38,7 +40,7 @@ function Login (){
 					<button onClick={()=> history.push('/home')}>Cancel</button>
 				</div>
 			</div>
-		</>
+		</div>
 	)
 }
 

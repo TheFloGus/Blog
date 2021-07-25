@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import avatar from "../img/avatar.jpg";
 import EditableField from "./EditableFIeld";
@@ -7,13 +7,15 @@ import LinkPost from "./LinkPost";
 import { v4 as uuidv4 } from "uuid";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleLoggedIn } from './slices/LoginSlice'
+import { themeContext } from "./context";
+
 
 function Home() {
   const userData = useSelector((state) => state.userData.userData);
   const dispatch = useDispatch();
   const isLogged = useSelector((state) => state.login.isLoggedIn.isLogged);
-
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  
+  const {theme, toggle} = useContext(themeContext)
 
   const posts = useSelector((state) => state.posts.posts);
 
@@ -24,14 +26,15 @@ function Home() {
   }
 
   function themeHandler() {
-    setIsDarkTheme(!isDarkTheme);
+	toggle();
   }
 
   return (
-    <div className="wrap">
+<div className = {`big-wrap ${theme}`}>
+    <div className= {`wrap ${theme}`}>
       <div className="header">
         <button className="button" onClick={themeHandler}>
-          {isDarkTheme ? "Light" : "Dark"}
+          {theme ? "Light" : "Dark"}
         </button>
         <button className="button" onClick={logInHandler}>
           {isLogged ? "LogOut" : "LogIn"}
@@ -62,6 +65,7 @@ function Home() {
         </div>
       </div>
     </div>
+</div>
   );
 }
 

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { editItem } from "./slices/userDataSlice"
+import PropTypes from "prop-types";
 
 function EditableField (props) {
 
@@ -41,5 +42,11 @@ function EditableField (props) {
 		</div>
 	)
 }
+
+EditableField.propTypes = {
+	value: PropTypes.string,
+	keyObj: PropTypes.string,
+};
+
 
 export default EditableField
