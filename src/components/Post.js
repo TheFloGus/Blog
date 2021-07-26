@@ -6,19 +6,18 @@ import PropTypes from "prop-types";
 function Post({ post, index }) {
   const dispatch = useDispatch();
   const { date, user, text } = post;
-  const {nickname} = useSelector((state) => state.userData.userData)
-  const isLogged = useSelector((state) => state.login.isLoggedIn.isLogged)
+  const { nickname } = useSelector((state) => state.userData.userData);
+  const isLogged = useSelector((state) => state.login.isLoggedIn.isLogged);
   const [edit, setEdit] = useState(false);
   const [value, setValue] = useState(text);
-  const [editable, setEditable] = useState(false)
-
+  const [editable, setEditable] = useState(false);
 
   useEffect(() => {
-	  if(user === 'guest') setEditable(true);
-	  if(user === nickname){
-		 isLogged ? setEditable(true) : setEditable(false)
-	  }
-  }, [isLogged])
+    if (user === "guest") setEditable(true);
+    if (user === nickname) {
+      setEditable(isLogged);
+    }
+  }, [isLogged]);
 
   function changeHandler(e) {
     setValue(e.target.value);
@@ -43,16 +42,18 @@ function Post({ post, index }) {
         <div>
           {edit ? (
             <button onClick={confirmHandler}>conf</button>
-          ) :( editable && (
-            <button
-              onClick={(e) => {
-                setEdit(true);
-                e.stopPropagation();
-              }}
-            >
-              edit
-            </button>
-		  ))}
+          ) : (
+            editable && (
+              <button
+                onClick={(e) => {
+                  setEdit(true);
+                  e.stopPropagation();
+                }}
+              >
+                edit
+              </button>
+            )
+          )}
           {edit && (
             <button
               onClick={(e) => {
@@ -84,11 +85,8 @@ function Post({ post, index }) {
 }
 
 Post.propTypes = {
-	post: PropTypes.object,
-	optionalUnion: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.number,
-	  ]),
+  post: PropTypes.object,
+  optionalUnion: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default Post;
