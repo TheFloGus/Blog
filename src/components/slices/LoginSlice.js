@@ -5,9 +5,7 @@ const initialState = {
     login: "theFloGus",
     password: "12345678",
   },
-  isLoggedIn: {
-    isLogged: false,
-  },
+  isLoggedIn: false,
 };
 
 const loginSlice = createSlice({
@@ -15,7 +13,7 @@ const loginSlice = createSlice({
   initialState,
   reducers: {
     toggleLoggedIn: (state) => {
-      state.isLoggedIn.isLogged = !state.isLoggedIn.isLogged;
+      state.isLoggedIn = !state.isLoggedIn;
     },
   },
 });

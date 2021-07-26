@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { format } from "date-fns";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "./slices/PostsSlice";
+import { v4 as uuidv4 } from "uuid";
 
 function TextArea() {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.userData.userData);
-  const isLogged = useSelector((state) => state.login.isLoggedIn.isLogged);
+  const isLogged = useSelector((state) => state.login.isLoggedIn);
   const [value, setValue] = useState("");
 
   function changeHandler({ target }) {
@@ -20,6 +21,7 @@ function TextArea() {
           date: format(new Date(), "MM/dd/yyyy"),
           user: isLogged ? userData.nickname : "guest",
           text: value,
+		  id: uuidv4()
         })
       );
 

@@ -7,7 +7,7 @@ function Post({ post, index }) {
   const dispatch = useDispatch();
   const { date, user, text } = post;
   const { nickname } = useSelector((state) => state.userData.userData);
-  const isLogged = useSelector((state) => state.login.isLoggedIn.isLogged);
+  const isLogged = useSelector((state) => state.login.isLoggedIn);
   const [edit, setEdit] = useState(false);
   const [value, setValue] = useState(text);
   const [editable, setEditable] = useState(false);

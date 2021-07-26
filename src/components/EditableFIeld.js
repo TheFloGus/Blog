@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 function EditableField(props) {
   const { value, keyObj } = props;
-  const isLogged = useSelector((state) => state.login.isLoggedIn.isLogged);
+  const isLogged = useSelector((state) => state.login.isLoggedIn);
   const [edit, setEdit] = useState(false);
   const [word, setWord] = useState("");
   const dispatch = useDispatch();
